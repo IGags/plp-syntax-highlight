@@ -1,0 +1,108 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "plamp",
+	"foldingStartMarker": "^{\\s*$",
+    "foldingStopMarker": "^\\s*\\}",
+	"fileTypes": ["plp"],
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#default-types"
+		},
+		{
+			"include": "#func-name"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.plamp",
+				"match": "\\b(if|while|return|fn|model|module|use|as)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.plamp",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.plamp",
+					"match": "\\\\."
+				}
+			]
+		},
+		"constants":{
+			"patterns": [
+				{
+					"include": "#constants-numeric"
+				},
+				{
+					"include": "#constants-boolean"
+				},
+				{
+					"include": "#constants-null"
+				}
+			]
+		},
+		"constants-numeric":{
+			"patterns": [
+				{
+					"name":"constant.numeric.plamp",
+					"match": "\\b[[:digit:]]+(\\.[[:digit:]]+)?\\b"
+				}
+			]
+		},
+		"constants-boolean":{
+			"patterns":[
+				{
+					"name":"constant.language.boolean.plamp",
+					"match": "\\b(true|false)\\b"
+				}
+			]
+		},
+		"constants-null":{
+			"patterns": [
+				{
+					"name":"constant.language.null.plamp",
+					"match": "\\b(null)\\b"
+				}
+			]
+		},
+		"operators":{
+			"patterns": [
+				{
+					"name":"keyword.operator.plamp",
+					"match": "(:=|>=|<=|!=|!|=|\\|\\||\\&\\&|\\+\\+|\\+|--|-|\\*|/|%|<|>)"
+				}
+			]	
+		},
+		"default-types":{
+			"patterns": [
+				{
+					"name":"entity.name.type.plamp",
+					"match": "\\b(int|uint|long|ulong|char|byte|float|double|bool|string|any)\\b"
+				}
+			]
+		},
+		"func-name":{
+			"patterns": [
+				{
+					"name":"entity.name.function.plamp",
+					"match": "\\b[[:alpha:]]{1}[[:alnum:]]*\\s*\\("
+				}
+			]
+		}
+	},
+	"scopeName": "source.plp"
+}

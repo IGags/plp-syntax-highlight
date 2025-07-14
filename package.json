@@ -1,0 +1,25 @@
+{
+  "name": "plp",
+  "displayName": "plp",
+  "description": "Plamp program",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "plamp",
+      "aliases": ["plamp"],
+      "extensions": [".plp"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "plamp",
+      "scopeName": "source.plp",
+      "path": "./syntaxes/plamp.tmLanguage.json"
+    }]
+  }
+}
