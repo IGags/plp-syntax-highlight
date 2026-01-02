@@ -21,6 +21,9 @@
 			"include": "#default-types"
 		},
 		{
+			"include": "#types-complex-cases"
+		},
+		{
 			"include": "#func-name"
 		}
 	],
@@ -28,7 +31,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.plamp",
-				"match": "\\b(if|while|return|fn|model|module|use|as)\\b"
+				"match": "\\b(if|while|return|fn|model|module|use|as|type|break|continue|else)\\b"
 			}]
 		},
 		"strings": {
@@ -59,7 +62,7 @@
 			"patterns": [
 				{
 					"name":"constant.numeric.plamp",
-					"match": "\\b[[:digit:]]+(\\.[[:digit:]]+)?\\b"
+					"match": "\\b[[:digit:]]+(\\.[[:digit:]]+(f|d|b|l|ul|i|ui)?)?\\b"
 				}
 			]
 		},
@@ -91,7 +94,27 @@
 			"patterns": [
 				{
 					"name":"entity.name.type.plamp",
-					"match": "\\b(int|uint|long|ulong|char|byte|float|double|bool|string|any)\\b"
+					"match": "\\b(int|uint|long|ulong|char|byte|float|double|bool|string|any|short|ushort|sbyte)"
+				}
+			]
+		},
+		"types-complex-cases":{
+			"patterns": [
+				{
+					"match": "(?:\\:\\s*(\\[\\])*)([[:alpha:]]{1}([[:word:]])*)",
+					"captures": {
+						"2": {"name": "entity.name.type.plamp"}
+					}
+				},
+				{
+					"name": "entity.name.type.plamp",
+					"match": "([[:alpha:]]{1}([[:word:]])*\\s*\\{)"
+				},
+				{
+					"match": "(?:\\]\\s*)([[:alpha:]]{1}([[:word:]])*)",
+					"captures": {
+						"1": {"name": "entity.name.type.plamp"}
+					}
 				}
 			]
 		},
@@ -99,7 +122,7 @@
 			"patterns": [
 				{
 					"name":"entity.name.function.plamp",
-					"match": "\\b[[:alpha:]]{1}[[:alnum:]]*\\s*\\("
+					"match": "[[:alpha:]]{1}([[:word:]])*\\s*\\("
 				}
 			]
 		}
