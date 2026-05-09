@@ -6,6 +6,9 @@
 	"fileTypes": ["plp"],
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -28,6 +31,20 @@
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.plamp",
+					"begin": "//",
+					"end": "$"
+				},
+				{
+					"name": "comment.block.plamp",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.plamp",
